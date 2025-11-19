@@ -154,16 +154,6 @@ body {
   border-bottom-left-radius: 0.35rem;
 }
 
-.message--notice {
-  align-self: center;
-  background: #fff6e0;
-  border: 1px solid #f4dfb7;
-  color: #604200;
-  text-align: center;
-  box-shadow: none;
-  font-weight: 600;
-}
-
 .message--typing {
   font-style: italic;
   color: #6d7385;
