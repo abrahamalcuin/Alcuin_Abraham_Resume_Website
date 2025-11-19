@@ -37,6 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return message;
   };
 
+  appendMessage({
+    text:
+      "Please note that the current server is hosted on a free service. The first message may take a minute or two, but the following messages should be near instantaneous.",
+    sender: "notice",
+  });
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const question = input.value.trim();
