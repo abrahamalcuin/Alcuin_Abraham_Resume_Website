@@ -19,7 +19,8 @@ const PARAGRAPH_ERROR_MESSAGE =
 
 const STOP_ICON_SRC = "stop_red_button_icon_227856.svg";
 const DEFAULT_MIC_SRC = micImage.getAttribute("src");
-const UPLOAD_ENDPOINT = "http://127.0.0.1:8000/upload";
+const API_BASE_URL = "https://accent-scoring.onrender.com";
+const UPLOAD_ENDPOINT = `${API_BASE_URL}/upload`;
 
 let mediaStream = null;
 let audioContext = null;
@@ -125,11 +126,11 @@ async function startRecording() {
         startCountdown();
         setInstructionText("Recording in progress...");
     } catch (error) {
-        console.error("Unable to access the microphone.", error);
+        console.error("Unable to start the recording.", error);
         cleanupRecordingNodes();
         showParagraphView();
         setInstructionText("Press record to begin.");
-        alert("Microphone access is required to record audio. Please allow access and try again.");
+        alert(getRecordingSetupErrorMessage(error));
     } finally {
         isSettingUpRecording = false;
     }
@@ -305,7 +306,7 @@ function setMicVisualState(recording) {
 
 async function fetchParagraph() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/paragraph");
+        const response = await fetch(`${API_BASE_URL}/paragraph`);
         if (!response.ok) {
             throw new Error("Unable to load reading text.");
         }
@@ -680,5 +681,31 @@ function cleanupRecordingNodes() {
         audioContext.close();
         audioContext = null;
     }
+}
+
+function getRecordingSetupErrorMessage(error) {
+    if (!error) {
+        return "We couldn't start a recording. Please refresh the page and try again.";
+    }
+
+    const errorName = error.name || "";
+    if (errorName === "NotAllowedError" || errorName === "PermissionDeniedError") {
+        return "Microphone access is required to record audio. Please allow access and try again.";
+    }
+
+    if (errorName === "NotFoundError" || errorName === "DevicesNotFoundError") {
+        return "We couldn't find a microphone. Please connect one and try again.";
+    }
+
+    if (errorName === "NotReadableError" || errorName === "TrackStartError") {
+        return "Another application is using the microphone. Close it and try recording again.";
+    }
+
+    const message = error.message || "";
+    if (message.includes("Reading passage could not be loaded")) {
+        return "We couldn't load the reading passage. Please refresh the page and try again.";
+    }
+
+    return "We couldn't start the recording. Please check your connection and try again.";
 }
    
