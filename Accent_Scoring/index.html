@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accent Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <a href="https://www.onlinejobs.ph/">
+                <img src="olj.svg" alt="Online Jobs.ph Logo">
+            </a>
+            <h1>Onlinejobs.ph Accent Test</h1>
+        </div>
+    </header>
+    <div class="page-content">
+        <div class="content-area">
+            <div id="paragraphBox" class="paragraph-box">
+                <p id="paragraphText">Once you hit record, text will show up on this screen. Read the text carefully and hit stop once done.</p>
+            </div>
+            <section id="resultsPage" class="results-page hidden">
+                <h2>Results</h2>
+                <p id="resultsStatus" class="results-status">Press record to begin.</p>
+                <div class="results-content">
+                    <div class="results-overview">
+                        <p class="results-label">Overall Score</p>
+                        <p id="overallScore" class="results-value">--</p>
+                    </div>
+                    <div class="results-details">
+                        <div class="results-detail-block">
+                            <p class="results-subtitle">Heavy Mispronunciation</p>
+                            <p id="heavyMispronunciation" class="results-list">--</p>
+                        </div>
+                        <div class="results-detail-block">
+                            <p class="results-subtitle">Light Mispronunciation</p>
+                            <p id="lightMispronunciation" class="results-list">--</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="downloadButton" class="download-button" disabled>Download Recording</button>
+            </section>
+        </div>
+        <div class="microphone-area">
+            <p id="instructionText" class="instruction-text">Press record to begin.</p>
+            <div class="microphone-container">
+                <div class="mic-wrapper">
+                    <svg class="countdown-ring" viewBox="0 0 160 160" aria-hidden="true">
+                        <circle class="countdown-track" cx="80" cy="80" r="70" />
+                        <circle id="countdownCircle" class="countdown-progress" cx="80" cy="80" r="70" />
+                    </svg>
+                    <div id = "mic" class="mic">
+                        <img src="mic.svg" alt="Microphone Button">
+                        <div class="mic-circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
