@@ -1,239 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alcuin Abraham | Resume</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <section class="hero keep-light">
-      <div class="hero__inner">
-        <div class="hero__text">
-                  <img class="hero__portrait" src="assets/hero-portrait.jpg" alt="Portrait of Alcuin Abraham" />
-          <h1>I'm Alcuin, your next superstar team member.</h1>
-        </div>
-        <div class="hero__cta-group">
-          <a class="hero__cta" href="#skills">
-            <span class="hero__cta-label">Get to know me better</span>
-            <span class="hero__arrow" aria-hidden="true">&#8595;</span>
-          </a>
-          <div class="hero__sub-links" role="group" aria-label="Quick links">
-            <a class="hero__sub-link" href="#skills-list">See projects</a>
-            <span class="hero__divider" aria-hidden="true">•</span>
-            <a class="hero__sub-link" href="advisor-chat/">Chat with the BYUI Advisor Bot</a>
-          </div>
-        </div>
-      </div>
-    </section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accent Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <section class="tldr keep-light">
-      <div class="tldr__inner">
-        <h2>TL;DR&nbsp;I eat rapid learning for breakfast and have efficiency for lunch.</h2>
-        <button class="tldr__toggle" type="button" aria-expanded="false" aria-controls="tldr-corporate">
-          click here if you want to read this in boring corporate speak
-        </button>
-        <div class="tldr__dropdown" id="tldr-corporate" aria-hidden="true">
-          <p>
-            Young and hungry, growth-oriented, dedicated, quick learner seeking a position to leverage skills in data-driven critical thinking, technical skills, attention to detail, and communication, while developing new skills that increase organizational and personal performance and efficiency.
-          </p>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <a href="https://www.onlinejobs.ph/">
+                <img src="olj.svg" alt="Online Jobs.ph Logo">
+            </a>
+            <h1>Onlinejobs.ph Accent Test</h1>
         </div>
-      </div>
-    </section>
-
-            <section class="skills-showcase" id="skills">
-      <div class="skills-showcase__inner">
-        <div class="skills-showcase__lead">
-          <h2 class="skills-showcase__headline">
-            I have a very particular set of skills. Skills I have acquired over a
-            <span class="strike">very long career</span>
-            <span class="replacement">short career</span>.
-            Skills that make me a
-            <span class="strike">nightmare</span>
-            <span class="replacement">dream-hire</span>
-            for people like you.
-          </h2>
-          <p class="skills-showcase__cite">Adapted from Taken (2008)</p>
-        </div>
-
-        <a class="skills-showcase__cta" href="#skills-list">
-          <span class="skills-showcase__cta-label">Read all About It</span>
-          <span class="skills-showcase__arrow" aria-hidden="true">&#8595;</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="skills-accordion-section" id="skills-list">
-      <div class="skills-accordion__inner">
-        <ul class="skills-accordion" role="list">
-          <li class="skills-accordion__item">
-            <button class="skills-accordion__toggle" type="button" aria-expanded="false" aria-controls="skill-analytical">
-              Analytical Thinking
-            </button>
-            <div class="skills-accordion__panel" id="skill-analytical" hidden>
-              <p>Detail-oriented and passionate about problem-solving. Experienced in looking at problems objectively, breaking them down systematically, identifying the root cause, and creating actionable solutions.</p>
+    </header>
+    <div class="page-content">
+        <div class="content-area">
+            <div id="paragraphBox" class="paragraph-box">
+                <p id="paragraphText">Once you hit record, text will show up on this screen. Read the text carefully and hit stop once done.</p>
             </div>
-          </li>
-
-          <li class="skills-accordion__item">
-            <button class="skills-accordion__toggle" type="button" aria-expanded="false" aria-controls="skill-growth">
-              Rapid Growth
-            </button>
-            <div class="skills-accordion__panel" id="skill-growth" hidden>
-              <p>Independent learner used to taking initiative in seeking resources to bolster growth.</p>
-            </div>
-          </li>
-
-          <li class="skills-accordion__item">
-            <button class="skills-accordion__toggle" type="button" aria-expanded="false" aria-controls="skill-detail">
-              Attention to Detail
-            </button>
-            <div class="skills-accordion__panel" id="skill-detail" hidden>
-              <p>I am highly observant and can easily spot things often overlooked.</p>
-            </div>
-          </li>
-
-          <li class="skills-accordion__item">
-            <button class="skills-accordion__toggle" type="button" aria-expanded="false" aria-controls="skill-communication">
-              Communication
-            </button>
-            <div class="skills-accordion__panel" id="skill-communication" hidden>
-              <p>TrueNorth 10/10. IELTS 8.5/9. No discernible accent and can easily participate in high-level conversations.</p>
-            </div>
-          </li>
-
-          <li class="skills-accordion__item">
-            <button class="skills-accordion__toggle" type="button" aria-expanded="false" aria-controls="skill-technical">
-              Technical Skills
-            </button>
-            <div class="skills-accordion__panel" id="skill-technical" hidden>
-              <p>I love anything that has to do with computers. I can easily pick up programs and software.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="experience-highlight" id="experience">
-      <div class="experience-highlight__inner">
-        <div class="experience-highlight__title">Now let's talk experience...</div>
-        <div class="experience-highlight__role">
-          <span class="experience-highlight__company">SplashNColor</span>
-          <span class="experience-highlight__position">Amazon Product Researcher / Systems Streamlining</span>
-          <span class="experience-highlight__dates">2024-2025</span>
+            <section id="resultsPage" class="results-page hidden">
+                <h2>Results</h2>
+                <p id="resultsStatus" class="results-status">Press record to begin.</p>
+                <div class="results-content">
+                    <div class="results-overview">
+                        <p class="results-label">Overall Score</p>
+                        <p id="overallScore" class="results-value">--</p>
+                    </div>
+                    <div class="results-details">
+                        <div class="results-detail-block">
+                            <p class="results-subtitle">Heavy Mispronunciation</p>
+                            <p id="heavyMispronunciation" class="results-list">--</p>
+                        </div>
+                        <div class="results-detail-block">
+                            <p class="results-subtitle">Light Mispronunciation</p>
+                            <p id="lightMispronunciation" class="results-list">--</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="downloadButton" class="download-button" disabled>Download Recording</button>
+            </section>
         </div>
-        <ul class="experience-highlight__list">
-          <li class="experience-highlight__item">Managed an entire Amazon Store by learning the Amazon Seller Central Platform.</li>
-          <li class="experience-highlight__item">Handled customer concerns and questions regarding products sold on Amazon.</li>
-          <li class="experience-highlight__item">Generated $20,000+ net revenue over the course of 10 months through data-driven product selection, management, and marketing, managing over 200 products.</li>
-          <li class="experience-highlight__item">Consolidated 2 full-time roles into 1 through developing a smoother SOP and AI utilization.</li>
-          <li class="experience-highlight__item">10x'd Product Launch efficiency through developing an AI tool that allowed AI-generated but human-verified research, copy creation, and upload.</li>
-          <li class="experience-highlight__item">Effectively collaborated with 3D designers and content managers to develop strong products for launch.</li>
-        </ul>
-
-        <div class="experience-highlight__role">
-          <h3 class="experience-highlight__subtitle">Volunteer Experience</h3>
-          <p class="experience-highlight__position">Full Time Missionary (2022-2024)</p>
-          <p class="experience-highlight__company">The Church of Jesus Christ of Latter-day Saints</p>
+        <div class="microphone-area">
+            <p id="instructionText" class="instruction-text">Press record to begin.</p>
+            <div class="microphone-container">
+                <div class="mic-wrapper">
+                    <svg class="countdown-ring" viewBox="0 0 160 160" aria-hidden="true">
+                        <circle class="countdown-track" cx="80" cy="80" r="70" />
+                        <circle id="countdownCircle" class="countdown-progress" cx="80" cy="80" r="70" />
+                    </svg>
+                    <div id = "mic" class="mic">
+                        <img src="mic.svg" alt="Microphone Button">
+                        <div class="mic-circle"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <ul class="experience-highlight__list">
-          <li class="experience-highlight__item">Held a leadership role overseeing 200 missionaries, teaching, and training through organization, culture building, and one-on-one coaching.</li>
-          <li class="experience-highlight__item">Received training on data analysis and business consulting principles from Mission Leader Jonathan W. Scholl, a former partner at Boston Consulting Group (BCG); collaborated on analyzing data to uncover insights, recognize trends, and implement data-driven action plans.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="contact-cta keep-light" id="contact">
-      <div class="contact-cta__inner">
-        <h2 class="contact-cta__headline">
-          But here's my number, so call me
-          <span class="contact-cta__strike">maybe</span>
-          <span class="contact-cta__replacement">definitely</span>.
-        </h2>
-        <div class="contact-cta__info">
-          <a class="contact-cta__link" href="tel:+19862756730">+1 986 275 6730</a>
-          <span class="contact-cta__separator">-</span>
-          <a class="contact-cta__link" href="mailto:Abr25005@byui.edu">Abr25005@byui.edu</a>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      (function () {
-        var lightSections = document.querySelectorAll('.keep-light');
-        if (!lightSections.length) return;
-
-        var body = document.body;
-        var visible = new Set();
-
-        var observer = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                visible.add(entry.target);
-              } else {
-                visible.delete(entry.target);
-              }
-            });
-
-            if (visible.size > 0) {
-              body.classList.remove('dark-mode');
-            } else {
-              body.classList.add('dark-mode');
-            }
-          },
-          { threshold: 0.25 }
-        );
-
-        lightSections.forEach(function (section) {
-          observer.observe(section);
-        });
-      })();
-
-      (function () {
-        var summaryToggle = document.querySelector('.tldr__toggle');
-        var summaryPanel = document.getElementById('tldr-corporate');
-        if (summaryToggle && summaryPanel) {
-          summaryToggle.addEventListener('click', function () {
-            var isExpanded = summaryToggle.getAttribute('aria-expanded') === 'true';
-            summaryToggle.setAttribute('aria-expanded', String(!isExpanded));
-            summaryPanel.classList.toggle('is-open', !isExpanded);
-            summaryPanel.setAttribute('aria-hidden', String(isExpanded));
-          });
-        }
-
-        var skillToggles = document.querySelectorAll('.skills-accordion__toggle');
-        skillToggles.forEach(function (toggle) {
-          var controls = toggle.getAttribute('aria-controls');
-          if (!controls) return;
-          var panel = document.getElementById(controls);
-          if (!panel) return;
-
-          toggle.addEventListener('click', function () {
-            var expanded = toggle.getAttribute('aria-expanded') === 'true';
-            toggle.setAttribute('aria-expanded', String(!expanded));
-            panel.hidden = expanded;
-          });
-        });
-
-        var experienceItems = document.querySelectorAll('.experience-highlight__item');
-        if (experienceItems.length) {
-          var experienceObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-              entry.target.classList.toggle('is-visible', entry.isIntersecting);
-            });
-          }, { threshold: 0.4 });
-
-          experienceItems.forEach(function (item) {
-            experienceObserver.observe(item);
-          });
-        }
-      })();
-    </script>
-  </body>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
-
-

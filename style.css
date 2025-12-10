@@ -1,0 +1,343 @@
+.site-header{
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    row-gap: 12px;
+}
+
+.site-header .logo{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.site-header .logo img{
+    max-width: 80px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.site-header .logo h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    color: #1a3e73;
+    margin: 0;
+}
+
+body{
+    background-color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-content{
+    min-height: calc(100vh - 120px);
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 24px 32px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.content-area{
+    width: 100%;
+}
+
+.paragraph-box,
+.results-page{
+    width: 100%;
+    min-height: 46vh;
+    border-radius: 20px;
+    background-color: rgb(220, 233, 248);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 28px;
+    box-shadow: 0 15px 40px rgba(3, 42, 94, 0.08);
+    box-sizing: border-box;
+}
+
+.paragraph-box p{
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.45;
+    color: #1a3e73;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.microphone-area{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.instruction-text{
+    font-size: 1rem;
+    color: #1a3e73;
+    margin: 0;
+}
+
+.microphone-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -6px;
+}
+
+.mic-wrapper{
+    position: relative;
+    --mic-size: clamp(152px, 42.75vw, 247px);
+    width: var(--mic-size, 200px);
+    height: var(--mic-size, 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mic{
+    position: relative;
+    width: calc(var(--mic-size, 200px) * 0.7);
+    height: calc(var(--mic-size, 200px) * 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mic img{
+    width: calc(var(--mic-size, 200px) * 0.32);
+    max-width: 90px;
+    z-index: 2;
+}
+
+.mic-circle{
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: #032a5e;
+}
+
+.countdown-ring{
+    position: absolute;
+    width: calc(var(--mic-size, 200px) * 0.95);
+    height: calc(var(--mic-size, 200px) * 0.95);
+    transform: rotate(-90deg);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.countdown-track{
+    fill: none;
+    stroke: rgba(26, 62, 115, 0.2);
+    stroke-width: 6;
+}
+
+.countdown-progress{
+    fill: none;
+    stroke: #ff4d4f;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+}
+
+.countdown-ring.active{
+    opacity: 1;
+}
+
+.results-page{
+    flex-direction: column;
+    color: #1a3e73;
+    margin: 0 auto;
+}
+
+.results-page h2{
+    margin: 0 0 12px;
+    font-size: 2rem;
+}
+
+.results-status{
+    margin: 0 0 20px;
+    font-size: 0.95rem;
+    color: rgba(3, 42, 94, 0.8);
+    min-height: 1.2rem;
+}
+
+.results-content{
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+
+.results-overview{
+    flex: 0 0 45%;
+    max-width: 45%;
+    min-width: 260px;
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 12px 30px rgba(3, 42, 94, 0.1);
+}
+
+.results-label{
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.results-value{
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 12px 0 0;
+}
+
+.results-details{
+    flex: 1 1 auto;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.results-detail-block{
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: left;
+    min-height: 100px;
+    box-shadow: 0 12px 30px rgba(3, 42, 94, 0.1);
+}
+
+.results-subtitle{
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.results-list{
+    margin: 0;
+    min-height: 52px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+
+.download-button{
+    margin-top: 8px;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 24px;
+    background-color: #032a5e;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.download-button:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+@media (max-width: 900px){
+    .page-content{
+        padding: 0 16px 28px;
+    }
+
+    .paragraph-box,
+    .results-page{
+        min-height: auto;
+    }
+
+    .results-content{
+        flex-wrap: wrap;
+    }
+
+    .results-overview,
+    .results-details{
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-width: unset;
+    }
+
+    .results-overview{
+        padding: 24px;
+    }
+}
+
+@media (max-width: 600px){
+    .site-header{
+        padding: 18px 12px;
+    }
+
+    .site-header .logo{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .site-header .logo h1{
+        font-size: 1.25rem;
+    }
+
+    .paragraph-box,
+    .results-page{
+        padding: 22px 18px;
+    }
+
+    .results-page h2{
+        font-size: 1.6rem;
+    }
+
+    .results-label{
+        font-size: 1.1rem;
+    }
+
+    .results-value{
+        font-size: 2.4rem;
+    }
+
+    .results-detail-block{
+        padding: 20px;
+    }
+
+    .download-button{
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px){
+    .page-content{
+        padding: 0 12px 20px;
+    }
+
+    .instruction-text{
+        text-align: center;
+        padding: 0 8px;
+    }
+}
