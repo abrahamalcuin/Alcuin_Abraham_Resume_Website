@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alcuin & Patricia | Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="home">
+      <div class="hero">
+          <img
+          class="hero__image"
+          src="assets/header-image.png"
+          alt="Wedding portrait of Alcuin and Patricia"
+        />
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-list">
+          <span class="nav__toggle-line" aria-hidden="true"></span>
+          <span class="nav__toggle-line" aria-hidden="true"></span>
+          <span class="nav__toggle-line" aria-hidden="true"></span>
+          <span class="sr-only">Toggle menu</span>
+        </button>
+        <ul class="nav__list" id="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+          <li><a href="#flow">Flow</a></li>
+          <li><a href="#support">Support Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="invitation" aria-labelledby="invitation-title">
+        <div class="section__inner">
+          <h1 class="section__title" id="invitation-title">ALCUIN & PATRICIA</h1>
+          <div class="invitation__card">
+            <img
+              src="assets/image.png"
+              alt="Wedding invitation"
+              width="425"
+              height="600"
+              loading="lazy"
+            />
+          </div>
+          <div class="button-row">
+            <a class="button" href="#rsvp">RSVP</a>
+            <a class="button button--ghost" href="#message">Write Us a Message</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="countdown" aria-labelledby="countdown-title">
+        <div class="section__inner">
+          <h2 class="section__title" id="countdown-title">COUNTDOWN</h2>
+          <div class="countdown__grid" data-countdown>
+            <div class="countdown__item">
+              <span class="countdown__number" data-days>00</span>
+              <span class="countdown__label">Days</span>
+            </div>
+            <div class="countdown__item">
+              <span class="countdown__number" data-hours>00</span>
+              <span class="countdown__label">Hours</span>
+            </div>
+            <div class="countdown__item">
+              <span class="countdown__number" data-minutes>00</span>
+              <span class="countdown__label">Minutes</span>
+            </div>
+            <div class="countdown__item">
+              <span class="countdown__number" data-seconds>00</span>
+              <span class="countdown__label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story" id="story" aria-labelledby="story-title">
+        <div class="section__inner section__inner--narrow">
+          <h2 class="section__title" id="story-title">OUR STORY</h2>
+          <p class="section__text">
+            We met, we laughed, we prayed, and we grew together. Our story has always felt like a
+            quiet promise, one we are grateful to celebrate with our closest friends and family.
+          </p>
+          <div class="button-row">
+            <a class="button" href="#story">Our Story</a>
+            <a class="button button--ghost" href="#support">Support Us</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="rsvp" id="rsvp" aria-labelledby="rsvp-title">
+        <div class="section__inner section__inner--narrow">
+          <h2 class="section__title" id="rsvp-title">RSVP</h2>
+          <p class="section__text">
+            Please let us know if you can celebrate with us. This form is a UI stub for now.
+          </p>
+          <form class="form" action="#" aria-label="RSVP form">
+            <label class="form__field">
+              <span>Full Name</span>
+              <input type="text" placeholder="Your name" />
+            </label>
+            <label class="form__field">
+              <span>Email</span>
+              <input type="email" placeholder="you@example.com" />
+            </label>
+            <label class="form__field">
+              <span>Attendance</span>
+              <select>
+                <option>Joyfully accept</option>
+                <option>Regretfully decline</option>
+              </select>
+            </label>
+            <button class="button" type="button">Submit RSVP</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="travel" aria-labelledby="travel-title">
+        <div class="section__inner">
+          <h2 class="section__title" id="travel-title">HOW TO GET THERE</h2>
+          <div class="travel__grid">
+            <div class="travel__map">
+              <iframe
+                title="Manila Philippines Temple"
+                src="https://www.google.com/maps?q=Manila%20Philippines%20Temple&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div class="travel__details">
+              <p class="section__text">
+                The ceremony and reception will be held at the Manila Philippines Temple. We
+                recommend arriving early for parking and quiet reflection.
+              </p>
+              <button class="button button--ghost" type="button" data-map-link>
+                Get Directions
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="flow" id="flow" aria-labelledby="flow-title">
+        <div class="section__inner section__inner--narrow">
+          <h2 class="section__title" id="flow-title">PROGRAM FLOW</h2>
+          <ol class="timeline">
+            <li class="timeline__item">
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <div>
+                <h3>Ceremony</h3>
+                <p>Sealing and vows with close family.</p>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <div>
+                <h3>Photos</h3>
+                <p>Portraits and family pictures on temple grounds.</p>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <div>
+                <h3>Reception</h3>
+                <p>Dinner, toasts, and warm conversation.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="support" id="support" aria-labelledby="support-title">
+        <div class="section__inner section__inner--narrow">
+          <h2 class="section__title" id="support-title">SUPPORT US</h2>
+          <p class="section__text">
+            Your presence is the greatest gift. If you wish to support our new beginning, we have
+            a small registry and a newlywed fund. Buttons are stubs for now.
+          </p>
+          <div class="button-row">
+            <button class="button" type="button">View Registry</button>
+            <button class="button button--ghost" type="button">Newlywed Fund</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="upload" id="message" aria-labelledby="upload-title">
+        <div class="section__inner section__inner--narrow">
+          <h2 class="section__title" id="upload-title">UPLOAD PHOTOS</h2>
+          <p class="section__text">
+            Share your favorite moments from the day. Uploads are reviewed before appearing in the
+            gallery.
+          </p>
+          <button class="button" type="button">Upload Photos</button>
+          <p class="caption">Uploads are reviewed before appearing in the gallery.</p>
+        </div>
+      </section>
+
+      <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+        <div class="section__inner">
+          <h2 class="section__title" id="gallery-title">GALLERY</h2>
+          <div class="gallery__grid">
+            <img src="assets/gallery-1.svg" alt="Engagement moment" loading="lazy" />
+            <img src="assets/gallery-2.svg" alt="Temple detail" loading="lazy" />
+            <img src="assets/gallery-3.svg" alt="Celebration detail" loading="lazy" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__names">ALCUIN & PATRICIA</p>
+      <p class="footer__date">May 1, 2026</p>
+      <p class="footer__location">Manila Philippines Temple</p>
+      <button class="audio-toggle" type="button" aria-pressed="false">
+        Play Reception Playlist
+      </button>
+      <audio class="audio" preload="none" aria-hidden="true">
+        <source src="" type="audio/mpeg" />
+      </audio>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

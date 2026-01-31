@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450">
+  <rect width="600" height="450" fill="#f2ede4" />
+  <circle cx="210" cy="220" r="90" fill="#c9b37e" opacity="0.4" />
+  <rect x="260" y="140" width="180" height="220" fill="#faf8f4" />
+  <text x="50%" y="85%" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#3a3a3a" letter-spacing="2">
+    Replace image
+  </text>
+</svg>
