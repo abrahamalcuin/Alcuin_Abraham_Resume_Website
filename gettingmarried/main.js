@@ -43,21 +43,65 @@
   const audioToggle = document.querySelector('.audio-toggle');
   const audio = document.querySelector('.audio');
 
-  if (audioToggle && audio) {
-    audioToggle.addEventListener('click', () => {
-      const isPlaying = audioToggle.getAttribute('aria-pressed') === 'true';
-      audioToggle.setAttribute('aria-pressed', String(!isPlaying));
-      audioToggle.textContent = isPlaying
-        ? 'Play Reception Playlist'
-        : 'Pause Reception Playlist';
+  const setAudioToggleState = (isPlaying) => {
+    if (!audioToggle) return;
+    audioToggle.setAttribute('aria-pressed', String(isPlaying));
+    audioToggle.textContent = isPlaying
+      ? 'Pause Reception Playlist'
+      : 'Play Reception Playlist';
+  };
 
-      if (audio.src) {
-        if (isPlaying) {
-          audio.pause();
-        } else {
-          audio.play().catch(() => {});
-        }
+  if (audio && audioToggle) {
+    audioToggle.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      } else {
+        audio.pause();
       }
+    });
+  }
+
+  if (audio) {
+    audio.addEventListener('play', () => setAudioToggleState(true));
+    audio.addEventListener('pause', () => setAudioToggleState(false));
+    audio.addEventListener('ended', () => setAudioToggleState(false));
+
+    const autoplayEvents = [
+      ['wheel', window],
+      ['scroll', window],
+      ['touchstart', document],
+    ];
+    const passiveEvents = new Set(['scroll', 'wheel', 'touchstart']);
+    let hasAutoplayAttempted = false;
+
+    function removeAutoplayListeners() {
+      autoplayEvents.forEach(([eventName, target]) => {
+        target.removeEventListener(eventName, attemptAutoplay);
+      });
+    }
+
+    function attemptAutoplay() {
+      if (!audio.paused) {
+        removeAutoplayListeners();
+        return;
+      }
+
+      if (hasAutoplayAttempted) return;
+      hasAutoplayAttempted = true;
+
+      audio
+        .play()
+        .then(() => {
+          removeAutoplayListeners();
+        })
+        .catch(() => {
+          hasAutoplayAttempted = false;
+        });
+    }
+
+    autoplayEvents.forEach(([eventName, target]) => {
+      const options = passiveEvents.has(eventName) ? { passive: true } : undefined;
+      target.addEventListener(eventName, attemptAutoplay, options);
     });
   }
 })();

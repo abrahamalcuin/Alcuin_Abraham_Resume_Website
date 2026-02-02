@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <nav class="mobile-nav" aria-label="Quick navigation">
+      <a href="#story">Story</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#support">Support Us</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+
     <header class="site-header" id="home">
       <div class="hero">
           <img
@@ -22,14 +29,7 @@
         />
       </div>
       <nav class="nav" aria-label="Primary">
-        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-list">
-          <span class="nav__toggle-line" aria-hidden="true"></span>
-          <span class="nav__toggle-line" aria-hidden="true"></span>
-          <span class="nav__toggle-line" aria-hidden="true"></span>
-          <span class="sr-only">Toggle menu</span>
-        </button>
         <ul class="nav__list" id="nav-list">
-          <li><a href="#home">Home</a></li>
           <li><a href="#story">Our Story</a></li>
           <li><a href="#rsvp">RSVP</a></li>
           <li><a href="#flow">Flow</a></li>
@@ -42,7 +42,7 @@
     <main>
       <section class="invitation" aria-labelledby="invitation-title">
         <div class="section__inner">
-          <h1 class="section__title" id="invitation-title">ALCUIN & PATRICIA</h1>
+          <h1 class="section__title" id="invitation-title">YOU'RE INVITED</h1>
           <div class="invitation__card">
             <img
               src="assets/image.png"
@@ -223,11 +223,12 @@
       <button class="audio-toggle" type="button" aria-pressed="false">
         Play Reception Playlist
       </button>
-      <audio class="audio" preload="none" aria-hidden="true">
-        <source src="" type="audio/mpeg" />
+      <audio class="audio" preload="metadata" aria-hidden="true">
+        <source src="assets/audio.mp3" type="audio/mpeg" />
       </audio>
     </footer>
 
     <script src="main.js"></script>
   </body>
 </html>
+
