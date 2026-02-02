@@ -247,6 +247,16 @@ section:nth-of-type(even) {
   text-align: left;
 }
 
+.form--embed {
+  padding: 0;
+}
+
+.form--embed iframe {
+  width: 100%;
+  min-height: 640px;
+  border: 0;
+}
+
 .form__field span {
   display: block;
   margin-bottom: 0.4rem;
