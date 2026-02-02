@@ -65,7 +65,7 @@
   };
 
   if (audio) {
-    audio.volume = 0.25;
+    audio.volume = 0.35;
   }
 
   if (audio && audioToggle) {
