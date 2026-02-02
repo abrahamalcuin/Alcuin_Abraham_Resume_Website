@@ -16,7 +16,7 @@
     <nav class="mobile-nav" aria-label="Quick navigation">
       <a href="#story">Story</a>
       <a href="#rsvp">RSVP</a>
-      <a href="#support"><span>Support</span><span>Us</span></a>
+      <a href="#support">Support Us</a>
       <a href="#gallery">Gallery</a>
     </nav>
 
@@ -30,6 +30,7 @@
       </div>
       <nav class="nav" aria-label="Primary">
         <ul class="nav__list" id="nav-list">
+          <li><a href="#home">Home</a></li>
           <li><a href="#story">Our Story</a></li>
           <li><a href="#rsvp">RSVP</a></li>
           <li><a href="#flow">Flow</a></li>
@@ -39,10 +40,29 @@
       </nav>
     </header>
 
+    <div class="audio-banner" aria-label="Reception playlist control">
+      <button class="audio-toggle" type="button" aria-pressed="false">
+        Play Music
+      </button>
+      <audio class="audio" preload="metadata" aria-hidden="true">
+        <source src="assets/audio.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+    <div class="music-prompt is-visible" role="dialog" aria-modal="true" aria-labelledby="music-prompt-title">
+      <div class="music-prompt__dialog">
+        <h2 id="music-prompt-title">Play Music?</h2>
+        <p>Choose whether you'd like to listen to the curated audio while you browse.</p>
+        <div class="music-prompt__actions">
+          <button class="button" type="button" data-music-accept>Yes, play music</button>
+          <button class="button button--ghost" type="button" data-music-decline>No, thanks</button>
+        </div>
+      </div>
+    </div>
+
     <main>
       <section class="invitation" aria-labelledby="invitation-title">
         <div class="section__inner">
-          <h1 class="section__title" id="invitation-title">YOU'RE INVITED</h1>
+          <h1 class="section__title" id="invitation-title">YOU'RE INVITED </h1>
           <div class="invitation__card">
             <img
               src="assets/image.png"
@@ -101,22 +121,26 @@
         <div class="section__inner section__inner--narrow">
           <h2 class="section__title" id="rsvp-title">RSVP</h2>
           <p class="section__text">
-            Please let us know if you can celebrate with us. Fill out the form below to RSVP.
+            Please let us know if you can celebrate with us. This form is a UI stub for now.
           </p>
-          <div class="form form--embed">
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSeNtjjbQtkcuAdkyx3vJQJdvoUqRz5NuVOr42UxgvD2p1C9aQ/viewform?embedded=true"
-              width="100%"
-              height="640"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-              loading="lazy"
-              title="RSVP Form"
-            >
-              Loading…
-            </iframe>
-          </div>
+          <form class="form" action="#" aria-label="RSVP form">
+            <label class="form__field">
+              <span>Full Name</span>
+              <input type="text" placeholder="Your name" />
+            </label>
+            <label class="form__field">
+              <span>Email</span>
+              <input type="email" placeholder="you@example.com" />
+            </label>
+            <label class="form__field">
+              <span>Attendance</span>
+              <select>
+                <option>Joyfully accept</option>
+                <option>Regretfully decline</option>
+              </select>
+            </label>
+            <button class="button" type="button">Submit RSVP</button>
+          </form>
         </div>
       </section>
 
@@ -216,12 +240,6 @@
       <p class="footer__names">ALCUIN & PATRICIA</p>
       <p class="footer__date">May 1, 2026</p>
       <p class="footer__location">Manila Philippines Temple</p>
-      <button class="audio-toggle" type="button" aria-pressed="false">
-        Play Reception Playlist
-      </button>
-      <audio class="audio" preload="metadata" aria-hidden="true">
-        <source src="assets/audio.mp3" type="audio/mpeg" />
-      </audio>
     </footer>
 
     <script src="main.js"></script>

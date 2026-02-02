@@ -222,10 +222,30 @@ section:nth-of-type(even) {
 }
 
 .countdown__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
   text-align: center;
+  flex-wrap: nowrap;
+}
+
+.countdown__item {
+  position: relative;
+  padding-right: 1rem;
+}
+
+.countdown__item:last-child {
+  padding-right: 0;
+}
+
+.countdown__item:not(:last-child)::after {
+  content: ":";
+  position: absolute;
+  right: -0.5rem;
+  top: 0.4rem;
+  font-size: 2rem;
+  color: var(--ink-blue);
 }
 
 .countdown__number {
@@ -330,6 +350,61 @@ section:nth-of-type(even) {
   gap: 1rem;
 }
 
+.audio-banner {
+  text-align: center;
+  padding: 1.5rem 1.5rem 0;
+  background: var(--ivory);
+}
+
+.music-prompt {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 20;
+}
+
+.music-prompt.is-visible {
+  display: flex;
+}
+
+.music-prompt__dialog {
+  width: min(420px, 100%);
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.music-prompt__dialog h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
+}
+
+.music-prompt__dialog p {
+  margin: 0 0 1.5rem;
+}
+
+.music-prompt__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 480px) {
+  .music-prompt__actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
 .footer {
   padding: 3rem 1.5rem 4rem;
   text-align: center;
@@ -347,7 +422,7 @@ section:nth-of-type(even) {
 }
 
 .audio-toggle {
-  margin-top: 1.5rem;
+  margin: 0 auto;
   background: transparent;
   border: 1px solid var(--gold);
   color: var(--ink-blue);
@@ -356,6 +431,9 @@ section:nth-of-type(even) {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 719px) {
@@ -391,7 +469,7 @@ section:nth-of-type(even) {
   }
 
   .countdown__grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 
   .travel__grid {

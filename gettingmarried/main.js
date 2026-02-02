@@ -42,14 +42,21 @@
 
   const audioToggle = document.querySelector('.audio-toggle');
   const audio = document.querySelector('.audio');
+  const musicPrompt = document.querySelector('.music-prompt');
+  const musicPromptAccept = document.querySelector('[data-music-accept]');
+  const musicPromptDecline = document.querySelector('[data-music-decline]');
 
   const setAudioToggleState = (isPlaying) => {
     if (!audioToggle) return;
     audioToggle.setAttribute('aria-pressed', String(isPlaying));
     audioToggle.textContent = isPlaying
-      ? 'Pause Reception Playlist'
-      : 'Play Reception Playlist';
+      ? 'Pause Music'
+      : 'Play Music';
   };
+
+  if (audio) {
+    audio.volume = 0.25;
+  }
 
   if (audio && audioToggle) {
     audioToggle.addEventListener('click', () => {
@@ -65,43 +72,33 @@
     audio.addEventListener('play', () => setAudioToggleState(true));
     audio.addEventListener('pause', () => setAudioToggleState(false));
     audio.addEventListener('ended', () => setAudioToggleState(false));
+  }
 
-    const autoplayEvents = [
-      ['wheel', window],
-      ['scroll', window],
-      ['touchstart', document],
-    ];
-    const passiveEvents = new Set(['scroll', 'wheel', 'touchstart']);
-    let hasAutoplayAttempted = false;
+  const hideMusicPrompt = () => {
+    if (!musicPrompt) return;
+    musicPrompt.classList.remove('is-visible');
+    musicPrompt.setAttribute('aria-hidden', 'true');
+  };
 
-    function removeAutoplayListeners() {
-      autoplayEvents.forEach(([eventName, target]) => {
-        target.removeEventListener(eventName, attemptAutoplay);
-      });
-    }
-
-    function attemptAutoplay() {
-      if (!audio.paused) {
-        removeAutoplayListeners();
-        return;
+  if (musicPromptAccept) {
+    musicPromptAccept.addEventListener('click', () => {
+      hideMusicPrompt();
+      if (audio && audio.paused) {
+        audio.play().catch(() => {});
       }
-
-      if (hasAutoplayAttempted) return;
-      hasAutoplayAttempted = true;
-
-      audio
-        .play()
-        .then(() => {
-          removeAutoplayListeners();
-        })
-        .catch(() => {
-          hasAutoplayAttempted = false;
-        });
-    }
-
-    autoplayEvents.forEach(([eventName, target]) => {
-      const options = passiveEvents.has(eventName) ? { passive: true } : undefined;
-      target.addEventListener(eventName, attemptAutoplay, options);
     });
+  }
+
+  if (musicPromptDecline) {
+    musicPromptDecline.addEventListener('click', () => {
+      hideMusicPrompt();
+      if (audio && !audio.paused) {
+        audio.pause();
+      }
+    });
+  }
+
+  if (!audio) {
+    hideMusicPrompt();
   }
 })();
