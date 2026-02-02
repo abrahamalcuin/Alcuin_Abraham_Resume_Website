@@ -261,10 +261,155 @@ section:nth-of-type(even) {
   font-size: 0.7rem;
 }
 
+.countdown--mini {
+  margin-top: 1rem;
+}
+
+.countdown__grid--mini {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+}
+
+.countdown--mini .countdown__item {
+  padding-right: 0.5rem;
+}
+
+.countdown--mini .countdown__item:not(:last-child)::after {
+  top: 0.1rem;
+  font-size: 1.3rem;
+}
+
+.countdown--mini .countdown__number {
+  font-size: 1.35rem;
+}
+
+.countdown--mini .countdown__label {
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+}
+
 .form {
   display: grid;
   gap: 1rem;
   text-align: left;
+}
+
+.details {
+  text-align: center;
+}
+
+.details__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.details__card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(47, 93, 115, 0.08);
+  text-align: left;
+}
+
+.details__card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
+}
+
+.details__card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.details__cta {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.subpage {
+  background: var(--ivory);
+  color: var(--charcoal);
+}
+
+.subpage-header {
+  text-align: center;
+  padding: 3rem 1.5rem 2rem;
+}
+
+.subpage-header h1 {
+  margin: 0 0 0.75rem;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
+}
+
+.subpage-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
+}
+
+.subpage-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+.subpage-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(47, 93, 115, 0.08);
+}
+
+.subpage-section + .subpage-section {
+  margin-top: 2rem;
+}
+
+.support-options {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.support-options h3 {
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--ink-blue);
+}
+
+.support-options p {
+  margin: 0;
+}
+
+.message-form .form-helper {
+  font-size: 0.8rem;
+  color: rgba(58, 58, 58, 0.7);
+  margin: 0;
+}
+
+.subpage-footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
 }
 
 .form--embed {
@@ -294,6 +439,16 @@ section:nth-of-type(even) {
   background: #fff;
 }
 
+.form textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(58, 58, 58, 0.2);
+  background: #fff;
+  resize: vertical;
+  min-height: 140px;
+}
+
 .travel__grid {
   display: grid;
   gap: 2rem;
@@ -308,33 +463,64 @@ section:nth-of-type(even) {
 
 .timeline {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 0 1rem;
   display: grid;
-  gap: 1.5rem;
+  gap: 0.5rem;
+  max-width: 500px;
 }
 
 .timeline__item {
   display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 1rem;
-  align-items: start;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  padding: 1rem 0 1rem 1rem;
 }
 
-.timeline__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--gold);
-  margin-top: 0.4rem;
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(47, 93, 115, 0.18);
+}
+
+.timeline__time {
+  font-weight: 600;
+  color: var(--ink-blue);
+  letter-spacing: 0.05em;
+  font-size: 0.78rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  align-items: flex-start;
+}
+
+.timeline__time span {
+  display: block;
 }
 
 .timeline h3 {
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.2rem;
   font-family: "Playfair Display", serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 0.95rem;
+}
+
+.timeline__item div {
+  text-align: left;
+}
+
+.timeline__item div p {
+  font-size: 0.78rem;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .caption {
@@ -343,6 +529,10 @@ section:nth-of-type(even) {
   text-transform: uppercase;
   margin-top: 1rem;
   color: rgba(58, 58, 58, 0.7);
+}
+
+.gallery__note {
+  margin-bottom: 1rem;
 }
 
 .gallery__grid {
@@ -436,6 +626,56 @@ section:nth-of-type(even) {
   justify-content: center;
 }
 
+.details__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.details__card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(47, 93, 115, 0.08);
+  text-align: left;
+}
+
+.details__card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
+}
+
+.details__card p {
+  margin: 0;
+}
+
+.details__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.details__card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(47, 93, 115, 0.08);
+  text-align: left;
+}
+
+.details__card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
+}
+
+.details__card p {
+  margin: 0;
+}
+
 @media (max-width: 719px) {
   .mobile-nav {
     display: flex;
@@ -480,4 +720,56 @@ section:nth-of-type(even) {
   .gallery__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+.details__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.details__card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(47, 93, 115, 0.08);
+  text-align: left;
+}
+
+.details__card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
+}
+
+.details__card p {
+  margin: 0;
+}
+.details {
+  text-align: center;
+}
+
+.details__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.details__card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(47, 93, 115, 0.08);
+  text-align: left;
+}
+
+.details__card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-blue);
+}
+
+.details__card p {
+  margin: 0;
 }

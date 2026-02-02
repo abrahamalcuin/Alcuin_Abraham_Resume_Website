@@ -10,10 +10,10 @@
   }
 
   const targetDate = new Date('2026-05-01T00:00:00+08:00');
-  const countdown = document.querySelector('[data-countdown]');
+  const countdowns = document.querySelectorAll('[data-countdown]');
 
   const updateCountdown = () => {
-    if (!countdown) return;
+    if (!countdowns.length) return;
     const now = new Date();
     const diff = targetDate - now;
     const totalSeconds = Math.max(0, Math.floor(diff / 1000));
@@ -22,10 +22,19 @@
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    countdown.querySelector('[data-days]').textContent = String(days).padStart(2, '0');
-    countdown.querySelector('[data-hours]').textContent = String(hours).padStart(2, '0');
-    countdown.querySelector('[data-minutes]').textContent = String(minutes).padStart(2, '0');
-    countdown.querySelector('[data-seconds]').textContent = String(seconds).padStart(2, '0');
+    countdowns.forEach((container) => {
+      const daysEl = container.querySelector('[data-days]');
+      const hoursEl = container.querySelector('[data-hours]');
+      const minutesEl = container.querySelector('[data-minutes]');
+      const secondsEl = container.querySelector('[data-seconds]');
+
+      if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+    });
   };
 
   updateCountdown();
