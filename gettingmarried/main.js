@@ -42,7 +42,8 @@
 
   const mapButton = document.querySelector('[data-map-link]');
   if (mapButton) {
-    mapButton.addEventListener('click', () => {
+    mapButton.addEventListener('click', (event) => {
+      if (event) event.preventDefault();
       const url =
         'https://www.google.com/maps/dir/?api=1&destination=Manila%20Philippines%20Temple';
       window.open(url, '_blank', 'noopener');
