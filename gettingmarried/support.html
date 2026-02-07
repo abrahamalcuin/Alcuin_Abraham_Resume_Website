@@ -31,23 +31,78 @@
         </p>
         <ul class="support-options">
           <li>
-            <h3>GCash</h3>
-            <p>Send to <strong>+63 927 404 5997</strong></p>
+            <button
+              class="support-option"
+              type="button"
+              data-support-trigger
+              data-support-title="GCash"
+              data-support-description="Send a monetary gift conveniently through the GCash app."
+              data-support-number="09190025169"
+              data-support-number-label="GCash Number"
+              data-support-qr="assets/Gcash.jpeg"
+              data-support-qr-label="Scan to send via GCash"
+            >
+              <span class="support-option__text">
+                <span class="support-option__name">GCash</span>
+                <span class="support-option__detail">0919 002 5169</span>
+              </span>
+              <span class="support-option__action" aria-hidden="true"></span>
+            </button>
           </li>
           <li>
-            <h3>PayMaya</h3>
-            <p>Send to <strong>+63 927 404 5997</strong></p>
+            <button
+              class="support-option"
+              type="button"
+              data-support-trigger
+              data-support-title="BPI"
+              data-support-description="Scan this BPI QR code using your banking app."
+              data-support-qr="assets/BPI.png"
+              data-support-qr-label="Scan to send via BPI"
+            >
+              <span class="support-option__text">
+                <span class="support-option__name">BPI</span>
+                <span class="support-option__detail">QR transfer</span>
+              </span>
+              <span class="support-option__action" aria-hidden="true"></span>
+            </button>
           </li>
           <li>
-            <h3>PayPal</h3>
-            <p>
-              You can send through PayPal here:
-              <a href="https://paypal.me/AbrahamAlcuin" target="_blank" rel="noopener">paypal.me/AbrahamAlcuin</a>
-            </p>
+            <button
+              class="support-option"
+              type="button"
+              data-support-trigger
+              data-support-title="PayMaya"
+              data-support-description="PayMaya works too&mdash;send the same number and we'll receive your gift."
+              data-support-number="+63 927 404 5997"
+              data-support-number-label="PayMaya Number"
+              data-support-qr="assets/Maya.jpg"
+              data-support-qr-label="Scan to send via PayMaya"
+            >
+              <span class="support-option__text">
+                <span class="support-option__name">PayMaya</span>
+                <span class="support-option__detail">+63 927 404 5997</span>
+              </span>
+              <span class="support-option__action" aria-hidden="true"></span>
+            </button>
           </li>
           <li>
-            <h3>Envelope Gift</h3>
-            <p>You can also hand a small envelope on the wedding day if that is easier for you.</p>
+            <button
+              class="support-option"
+              type="button"
+              data-support-trigger
+              data-support-title="PayPal"
+              data-support-description="PayPal is perfect for overseas friends and family."
+              data-support-link="https://paypal.me/AbrahamAlcuin"
+              data-support-link-text="paypal.me/AbrahamAlcuin"
+              data-support-qr="assets/paypal.jpg"
+              data-support-qr-label="Scan to pay Alcuin Abraham"
+            >
+              <span class="support-option__text">
+                <span class="support-option__name">PayPal</span>
+                <span class="support-option__detail">paypal.me/AbrahamAlcuin</span>
+              </span>
+              <span class="support-option__action" aria-hidden="true"></span>
+            </button>
           </li>
         </ul>
       </section>
@@ -61,6 +116,44 @@
         <a class="button" href="message.html">Write Us a Message</a>
       </section>
     </main>
+
+    <div class="support-modal" data-support-modal aria-hidden="true">
+      <div class="support-modal__overlay" data-support-close></div>
+      <div class="support-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="support-modal-title" tabindex="-1">
+        <button class="support-modal__close" type="button" data-support-close aria-label="Close support details">&times;</button>
+        <div class="support-modal__content">
+          <h2 class="support-modal__title" id="support-modal-title" data-support-modal-title>Support details</h2>
+          <p class="support-modal__description" data-support-modal-description></p>
+          <div class="support-modal__qr" data-support-modal-qr hidden>
+            <img src="" alt="" data-support-modal-qr-image />
+            <p class="support-modal__qr-label" data-support-modal-qr-label></p>
+            <a
+              class="support-modal__download"
+              href="#"
+              download
+              data-support-modal-qr-download
+            >
+              Download QR
+            </a>
+          </div>
+          <div class="support-modal__field" data-support-modal-number hidden>
+            <span class="support-modal__field-label" data-support-modal-number-label>Account number</span>
+            <div class="support-modal__field-value">
+              <span data-support-modal-number-value></span>
+              <button class="support-modal__copy" type="button" data-copy-button="number" aria-label="Copy number">Copy</button>
+            </div>
+          </div>
+          <div class="support-modal__field" data-support-modal-link-field hidden>
+            <span class="support-modal__field-label">Payment link</span>
+            <div class="support-modal__field-value">
+              <a href="#" target="_blank" rel="noopener" data-support-modal-link>Open link</a>
+              <button class="support-modal__copy" type="button" data-copy-button="link" aria-label="Copy link">Copy</button>
+            </div>
+          </div>
+          <p class="support-modal__feedback" data-copy-feedback hidden></p>
+        </div>
+      </div>
+    </div>
 
     <footer class="subpage-footer">
       <p>With love, Alcuin &amp; Patricia</p>
