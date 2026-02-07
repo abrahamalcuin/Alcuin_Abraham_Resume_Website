@@ -108,6 +108,10 @@ main section {
   padding: 4rem 1.5rem;
 }
 
+main section.invitation {
+  padding-top: 2rem;
+}
+
 section:nth-of-type(even) {
   background: var(--cream);
 }
@@ -129,7 +133,7 @@ section:nth-of-type(even) {
   font-weight: 500;
   color: var(--ink-blue);
   margin: 0 0 1.5rem;
-  font-size: 1.6rem;
+  font-size: 1.92rem;
 }
 
 .section__text {
@@ -138,6 +142,15 @@ section:nth-of-type(even) {
 
 .invitation {
   text-align: center;
+}
+
+.invitation__subtitle {
+  margin: 1.25rem auto 1.5rem;
+  max-width: 32rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  color: var(--ink-blue);
 }
 
 .invitation__card {
@@ -160,6 +173,21 @@ section:nth-of-type(even) {
 .button-row--inline {
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.button-row--invite {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button-row--invite .button {
+  flex: 1 1 calc(50% - 0.75rem);
+  min-width: 140px;
+}
+
+.button-row--invite .button:nth-child(3) {
+  flex-basis: 100%;
 }
 
 .button {
@@ -763,6 +791,19 @@ section:nth-of-type(even) {
 
   .button-row {
     flex-direction: row;
+  }
+
+  .button-row--invite {
+    flex-wrap: nowrap;
+  }
+
+  .button-row--invite .button {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  .button-row--invite .button:nth-child(3) {
+    flex-basis: auto;
   }
 
   .countdown__grid {
