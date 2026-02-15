@@ -390,6 +390,15 @@ section:nth-of-type(even) {
   color: var(--ink-blue);
 }
 
+.subpage-header p {
+  max-width: 1620px;
+  margin: 0.5rem auto 0;
+}
+
+.subpage-header p:first-of-type {
+  margin-top: 0;
+}
+
 .subpage-link {
   display: inline-block;
   margin-bottom: 1rem;
@@ -397,6 +406,30 @@ section:nth-of-type(even) {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-blue);
+}
+
+.subpage-intro-quote {
+  margin: 1.5rem auto 0;
+  max-width: 680px;
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-blue);
+  padding: 0 1rem;
+  border: none;
+}
+
+.subpage-intro-quote p {
+  margin: 0;
+}
+
+.subpage-intro-quote footer {
+  margin-top: 0.75rem;
+  display: block;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  color: var(--charcoal);
 }
 
 .subpage-content {
