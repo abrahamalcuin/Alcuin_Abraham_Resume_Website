@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alcuin Abraham</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <button class="brand" id="homeLogo" type="button" aria-label="Go to Projects tab">
+      <img src="site_logo.png.png" alt="Site logo" class="brand-logo">
+      <span class="brand-lines" aria-hidden="true">
+      </span>
+    </button>
+    <nav class="site-nav" aria-label="Primary tabs">
+      <div class="tablist" role="tablist" aria-orientation="horizontal">
+        <a id="tab-projects" class="tab-link" role="tab" aria-selected="true" aria-controls="projects" href="#projects" data-tab="projects">Projects</a>
+        <a id="tab-resume" class="tab-link" role="tab" aria-selected="false" aria-controls="resume" href="#resume" data-tab="resume" tabindex="-1">Resume</a>
+        <a id="tab-experience" class="tab-link" role="tab" aria-selected="false" aria-controls="experience" href="#experience" data-tab="experience" tabindex="-1">Experience</a>
+        <a id="tab-contact" class="tab-link" role="tab" aria-selected="false" aria-controls="contact" href="#contact" data-tab="contact" tabindex="-1">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content-shell" id="contentRoot">
+    <section id="projects" class="tab-panel" role="tabpanel" aria-labelledby="tab-projects">
+      <h1>Projects</h1>
+      <p class="panel-intro">Selected work in AI, automation, and applied data systems.</p>
+      <div class="card-grid">
+        <article class="card project-card">
+          <h2>Advisor Chat (Prototype)</h2>
+          <p>
+            Created a prototype AI chatbot that utilizes the Gemini embedding model alongside retrieval
+            augmented generation to potentially provide accurate information to international students
+            applying to BYUI.
+          </p>
+          <div class="project-preview">
+            <iframe
+              src="advisor-chat/index.html"
+              title="Advisor Chat project preview"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            ></iframe>
+          </div>
+          <div class="button-row">
+            <a href="advisor-chat/index.html" class="ghost-button">Try it</a>
+          </div>
+        </article>
+        <article class="card project-card">
+          <h2>Accent Scoring (Semester Project)</h2>
+          <p>
+            Developed an accent detection scoring website through Microsoft Azure API to network with
+            the founder of onlinejobs.ph, an outsourcing website home to 2M+ Filipino workers.
+          </p>
+          <div class="project-preview">
+            <iframe
+              src="Accent_Scoring/index.html"
+              title="Accent Scoring project preview"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            ></iframe>
+          </div>
+          <div class="button-row">
+            <a href="Accent_Scoring/index.html" class="ghost-button">Try it</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="resume" class="tab-panel" role="tabpanel" aria-labelledby="tab-resume" hidden>
+      <h1>Resume</h1>
+      <div class="resume-preview">
+        <img
+          src="ALCUIN_JOSEPHABRAHAM_Resume_preview_page1.png"
+          alt="Resume preview page 1"
+          class="resume-preview-image"
+          loading="lazy"
+        >
+      </div>
+      <div class="button-row resume-download-row">
+        <a href="ALCUIN_JOSEPHABRAHAM_Resume.pdf" class="ghost-button" download>Download Resume (PDF)</a>
+      </div>
+    </section>
+
+    <section id="experience" class="tab-panel" role="tabpanel" aria-labelledby="tab-experience" hidden>
+      <h1>Experience</h1>
+      <div class="card-grid">
+        <article class="card">
+          <h2>Amazon Store Manager / Systems Streamlining &amp; AI Integration</h2>
+          <p>SplashNColor | Oct 2024-Aug 2025</p>
+          <ul>
+            <li>Consolidated two full-time roles into one part-time role through systems, tools, and process optimization, effectively cutting costs by 50% and increasing productivity by 165%.</li>
+            <li>Created and deployed an AI internal tool that increased weekly product launch efficiency from 10 products to 100.</li>
+            <li>Established three new product research streams, enhancing discovery methods and strengthening competitive positioning.</li>
+            <li>Analyzed insights to refine marketing strategy for products, aligning efforts with profitability outcomes.</li>
+            <li>Developed training materials and operational procedures to expedite onboarding process.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Systems Integration and Automation</h2>
+          <p>BYUI University Relations | Jan 2026-Current</p>
+          <ul>
+            <li>Owned end-to-end design of scalable transactional email infrastructure; researched platforms, defined architecture, and deployed production-ready systems without requiring micromanagement.</li>
+            <li>Replacing manual Excel workflows with an automated SFTP ingestion pipeline in Python (pandas) for CRM-bound prospective student data.</li>
+            <li>Enforcing schema and engineering safe file handling, and data validation for reliable processing.</li>
+            <li>Created standard operation procedures, documented edge cases, and created training for future scaling and maintenance.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Volunteer Experience</h2>
+          <p>The Church of Jesus Christ of Latter-day Saints (07/01/22 - 08/01/24)</p>
+          <ul>
+            <li>Contributed to changing organizational culture through data-driven decisions.</li>
+            <li>Trained and motivated over 200 volunteers to achieve the organizational purpose.</li>
+            <li>Collaborated with a retired BCG (Boston Consulting Group) Partner.</li>
+            <li>Created and presented training materials and slide decks for organization wide conferences and meetings.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="tab-panel" role="tabpanel" aria-labelledby="tab-contact" hidden>
+      <h1>Contact</h1>
+      <div class="card-grid">
+        <article class="card contact-card">
+          <h2>Email</h2>
+          <p>abrahamalcuin@gmail.com</p>
+          <div class="button-row">
+            <a href="mailto:abrahamalcuin@gmail.com" class="ghost-button">Send Email</a>
+          </div>
+        </article>
+        <article class="card contact-card">
+          <h2>Phone</h2>
+          <p>(986) 275-6730</p>
+          <div class="button-row">
+            <a href="tel:+19862756730" class="ghost-button">Call Phone</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
