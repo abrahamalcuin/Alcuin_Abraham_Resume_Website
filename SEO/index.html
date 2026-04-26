@@ -3,437 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SEO Dashboard | Alcuin Abraham</title>
-  <meta name="description" content="A minimalist pastel SEO dashboard template for Alcuin Abraham." />
-  <link rel="canonical" href="https://alcuinabraham.com/SEO/" />
+  <title>SEO Project Manager | Alcuin Abraham</title>
+  <meta name="description" content="Preview page for an SEO project management workspace built with FastAPI, SQLite, and a protected operations dashboard." />
   <style>
     :root {
-      --bg: #f8f5ff;
-      --bg-soft: #fffdf8;
-      --surface: rgba(255, 255, 255, 0.78);
-      --surface-strong: rgba(255, 255, 255, 0.92);
-      --text: #2f2a3a;
-      --muted: #746d85;
-      --line: rgba(107, 88, 140, 0.12);
-      --lavender: #e9ddff;
-      --mint: #dff7ee;
-      --peach: #ffe7dc;
-      --sky: #dfeeff;
-      --shadow: 0 24px 60px rgba(134, 115, 170, 0.12);
+      --bg: #f7f7fb;
+      --surface: rgba(255, 255, 255, 0.84);
+      --surface-strong: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: rgba(31, 41, 55, 0.08);
+      --lavender: #ece7ff;
+      --mint: #e7f8ef;
+      --peach: #ffeedf;
+      --sky: #e7f0ff;
+      --shadow: 0 24px 60px rgba(31, 41, 55, 0.08);
       --radius-xl: 28px;
       --radius-lg: 20px;
       --radius-md: 16px;
     }
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       min-height: 100vh;
       font-family: Inter, "Segoe UI", system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(233, 221, 255, 0.9), transparent 34%),
-        radial-gradient(circle at top right, rgba(223, 247, 238, 0.85), transparent 28%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+        radial-gradient(circle at top left, rgba(236, 231, 255, 0.95), transparent 30%),
+        radial-gradient(circle at top right, rgba(231, 248, 239, 0.95), transparent 24%),
+        linear-gradient(180deg, #f8f7ff 0%, #fffdfa 100%);
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(1160px, calc(100vw - 32px)); margin: 0 auto; padding: 28px 0 48px; }
+    .topbar, .panel {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
     }
-
-    .shell {
-      width: min(1180px, calc(100vw - 32px));
-      margin: 0 auto;
-      padding: 28px 0 48px;
-    }
-
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-bottom: 24px;
-      padding: 18px 22px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      backdrop-filter: blur(18px);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+      padding: 20px 24px;
+      margin-bottom: 22px;
     }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .brand h1, h2, h3, h4, p { margin: 0; }
+    .eyebrow { font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .top-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .pill, .ghost {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line);
+      background: var(--surface-strong); font-size: .92rem;
     }
-
-    .eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .brand h1,
-    .hero h2,
-    .panel h3,
-    .panel h4,
-    .list-card h4 {
-      margin: 0;
-    }
-
-    .brand h1 {
-      font-size: 1.05rem;
-      font-weight: 700;
-    }
-
-    .topbar__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .pill {
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      border: 1px solid var(--line);
-      background: var(--surface-strong);
-    }
-
-    .dashboard {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .column {
-      display: grid;
-      gap: 22px;
-    }
-
-    .panel {
-      border: 1px solid var(--line);
-      background: var(--surface);
-      backdrop-filter: blur(18px);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .hero {
-      padding: 28px;
-    }
-
-    .hero__tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin-bottom: 18px;
-    }
-
-    .hero h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      max-width: 10ch;
-      margin-bottom: 14px;
-    }
-
-    .hero p {
-      margin: 0;
-      max-width: 58ch;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255,255,255,0.45);
-    }
-
+    .ghost.primary { background: #111827; color: #fff; }
+    .layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 22px; }
+    .column { display: grid; gap: 22px; }
+    .hero { padding: 30px; }
+    .hero-tag { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.82); border: 1px solid var(--line); color: var(--muted); margin-bottom: 18px; }
+    .hero h2 { font-size: clamp(2.1rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -.04em; max-width: 10ch; margin-bottom: 14px; }
+    .hero p { color: var(--muted); line-height: 1.7; max-width: 60ch; }
+    .stats, .cards { display: grid; gap: 14px; }
+    .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 24px; }
+    .stat, .mini, .note, .task, .workspace-tile { border-radius: var(--radius-lg); border: 1px solid var(--line); }
+    .stat { padding: 18px; }
     .stat:nth-child(1) { background: var(--lavender); }
     .stat:nth-child(2) { background: var(--mint); }
     .stat:nth-child(3) { background: var(--peach); }
-
-    .stat span {
-      display: block;
-      font-size: 0.82rem;
-      color: rgba(47, 42, 58, 0.68);
-      margin-bottom: 8px;
-    }
-
-    .stat strong {
-      font-size: 1.9rem;
-      line-height: 1;
-    }
-
-    .section {
-      padding: 24px 26px 26px;
-    }
-
-    .section__head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .section__head p {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .mini-card {
-      padding: 18px;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.66);
-      border: 1px solid var(--line);
-    }
-
-    .mini-card:nth-child(2) { background: rgba(223, 238, 255, 0.8); }
-    .mini-card:nth-child(3) { background: rgba(255, 231, 220, 0.76); }
-    .mini-card:nth-child(4) { background: rgba(223, 247, 238, 0.76); }
-
-    .mini-card span,
-    .task small,
-    .list-card small {
-      color: var(--muted);
-    }
-
-    .mini-card strong {
-      display: block;
-      font-size: 1.45rem;
-      margin: 8px 0 6px;
-    }
-
-    .task-list,
-    .notes {
-      display: grid;
-      gap: 12px;
-    }
-
-    .task,
-    .list-card {
-      padding: 16px 18px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-    }
-
-    .task {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .task__badge {
-      white-space: nowrap;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      background: var(--sky);
-    }
-
-    .workspace {
-      background: linear-gradient(180deg, rgba(233,221,255,0.45) 0%, rgba(255,255,255,0.55) 100%);
-    }
-
-    .workspace__canvas {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 14px;
-    }
-
-    .workspace__tile {
-      min-height: 180px;
-      padding: 18px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.7);
-    }
-
-    .chart {
-      display: flex;
-      align-items: end;
-      gap: 10px;
-      height: 130px;
-      margin-top: 18px;
-    }
-
-    .bar {
-      flex: 1;
-      border-radius: 999px 999px 16px 16px;
-      background: linear-gradient(180deg, #d9c8ff 0%, #f3ebff 100%);
-    }
-
+    .stat span, .mini span, .note small, .task small { color: rgba(31,41,55,.68); display: block; }
+    .stat strong { font-size: 1.95rem; }
+    .section { padding: 24px 26px 26px; }
+    .section-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .section-head p { color: var(--muted); margin-top: 4px; }
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mini { padding: 18px; background: rgba(255,255,255,.72); }
+    .mini:nth-child(2) { background: rgba(231, 240, 255, .85); }
+    .mini:nth-child(3) { background: rgba(255, 238, 223, .85); }
+    .mini:nth-child(4) { background: rgba(231, 248, 239, .85); }
+    .mini strong { display:block; font-size:1.5rem; margin: 8px 0 6px; }
+    .tasks, .notes { display:grid; gap:12px; }
+    .task, .note, .workspace-tile { padding:16px 18px; background: rgba(255,255,255,.74); }
+    .task { display:flex; justify-content:space-between; gap:16px; align-items:center; }
+    .badge { white-space: nowrap; padding: 8px 12px; border-radius: 999px; font-size: .82rem; background: var(--sky); }
+    .workspace { background: linear-gradient(180deg, rgba(236,231,255,.5) 0%, rgba(255,255,255,.58) 100%); }
+    .workspace-canvas { margin-top:18px; display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; }
+    .workspace-list { display:grid; gap:10px; margin-top:14px; }
+    .workspace-list div { display:flex; justify-content:space-between; gap:12px; color: var(--muted); }
+    .chart { display:flex; align-items:end; gap:10px; height:130px; margin-top:18px; }
+    .bar { flex:1; border-radius:999px 999px 16px 16px; background: linear-gradient(180deg, #d9c8ff 0%, #f3ebff 100%); }
     .bar:nth-child(2) { background: linear-gradient(180deg, #cdeede 0%, #ebfaf4 100%); }
     .bar:nth-child(3) { background: linear-gradient(180deg, #ffd7c4 0%, #fff1ea 100%); }
     .bar:nth-child(4) { background: linear-gradient(180deg, #d5e8ff 0%, #eef6ff 100%); }
-
-    .workspace__list {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .workspace__list div {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .back-link {
-      display: inline-flex;
-      margin-top: 26px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 920px) {
-      .dashboard,
-      .workspace__canvas {
-        grid-template-columns: 1fr;
-      }
-
-      .stats,
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .shell {
-        width: min(100vw - 20px, 1180px);
-        padding-top: 18px;
-      }
-
-      .topbar,
-      .section,
-      .hero {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .topbar,
-      .section__head,
-      .task {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
+    .footer-link { display:inline-flex; margin-top: 26px; color: var(--muted); }
+    @media (max-width: 920px) { .layout, .workspace-canvas, .stats, .cards { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .shell { width: min(100vw - 20px, 1160px); padding-top: 18px; } .topbar, .section, .hero { padding-left:18px; padding-right:18px; } .topbar, .section-head, .task { flex-direction:column; align-items:flex-start; } }
   </style>
 </head>
 <body>
   <main class="shell">
     <section class="topbar">
       <div class="brand">
-        <span class="eyebrow">Alcuin Abraham</span>
-        <h1>SEO Dashboard Template</h1>
+        <span class="eyebrow">Portfolio project</span>
+        <h1>SEO Project Manager</h1>
       </div>
-      <div class="topbar__actions">
-        <span class="pill">Minimalist</span>
-        <span class="pill">Pastel Theme</span>
-        <span class="pill">Rough Base</span>
+      <div class="top-actions">
+        <a class="ghost primary" href="https://ai-international-services-chatbot.onrender.com/SEO" target="_blank" rel="noreferrer">Open protected app</a>
+        <a class="ghost" href="/">Back to portfolio</a>
       </div>
     </section>
 
-    <section class="dashboard">
+    <section class="layout">
       <div class="column">
         <article class="panel hero">
-          <div class="hero__tag">Quiet growth, clear signals, clean reporting</div>
-          <h2>Simple SEO workspace for strategy and momentum.</h2>
+          <div class="hero-tag">Client onboarding, task automation, clear SEO operations</div>
+          <h2>Calm SEO workflow built for real delivery.</h2>
           <p>
-            A calm starting point for tracking search visibility, content opportunities, technical fixes,
-            and campaign priorities. This is intentionally lightweight so it can evolve fast.
+            This preview represents the product layer for a protected FastAPI app that manages SEO clients,
+            stores onboarding details, generates tier-based task plans automatically, and tracks execution status.
           </p>
           <div class="stats">
-            <div class="stat">
-              <span>Visibility score</span>
-              <strong>74</strong>
-            </div>
-            <div class="stat">
-              <span>Keywords up</span>
-              <strong>+18</strong>
-            </div>
-            <div class="stat">
-              <span>Pages to fix</span>
-              <strong>06</strong>
-            </div>
+            <div class="stat"><span>Service tiers</span><strong>3</strong></div>
+            <div class="stat"><span>Task categories</span><strong>5</strong></div>
+            <div class="stat"><span>Status states</span><strong>4</strong></div>
           </div>
         </article>
 
         <article class="panel section">
-          <div class="section__head">
+          <div class="section-head">
             <div>
-              <h3>Snapshot</h3>
-              <p>Core cards for a homepage-style overview.</p>
+              <h3>What the backend app handles</h3>
+              <p>Protected session auth and SQLite-backed project tracking.</p>
             </div>
-            <span class="pill">This week</span>
+            <span class="pill">FastAPI + SQLite</span>
           </div>
           <div class="cards">
-            <div class="mini-card">
-              <span>Organic traffic</span>
-              <strong>12.4k</strong>
-              <small>steady from last week</small>
+            <div class="mini">
+              <span>Client onboarding</span>
+              <strong>Structured intake</strong>
+              <small>Company profile, contacts, website, credentials, notes, and deadlines.</small>
             </div>
-            <div class="mini-card">
-              <span>Average position</span>
-              <strong>8.3</strong>
-              <small>improving on target pages</small>
+            <div class="mini">
+              <span>Task automation</span>
+              <strong>Tier templates</strong>
+              <small>Tier 1, Tier 2, and Tier 3 automatically create normalized task sets.</small>
             </div>
-            <div class="mini-card">
-              <span>CTR</span>
-              <strong>4.9%</strong>
-              <small>room to improve metadata</small>
+            <div class="mini">
+              <span>Execution tracking</span>
+              <strong>Live status updates</strong>
+              <small>Tasks move across Not Started, In Progress, Done, and Blocked.</small>
             </div>
-            <div class="mini-card">
-              <span>Indexed pages</span>
-              <strong>132</strong>
-              <small>all major pages healthy</small>
+            <div class="mini">
+              <span>Growth-ready</span>
+              <strong>Multi-page shell</strong>
+              <small>Dashboard, clients, and tasks entry points for future deeper views.</small>
             </div>
           </div>
         </article>
 
         <article class="panel section workspace">
-          <div class="section__head">
+          <div class="section-head">
             <div>
-              <h3>Performance canvas</h3>
-              <p>A placeholder section for charts, rankings, and top pages.</p>
+              <h3>Preview canvas</h3>
+              <p>Visual direction for the dashboard experience.</p>
             </div>
-            <span class="pill">Draft module</span>
+            <span class="pill">Static preview</span>
           </div>
-          <div class="workspace__canvas">
-            <div class="workspace__tile">
+          <div class="workspace-canvas">
+            <div class="workspace-tile">
               <h4>Keyword movement</h4>
               <div class="chart" aria-hidden="true">
                 <div class="bar" style="height: 48%"></div>
@@ -442,13 +180,14 @@
                 <div class="bar" style="height: 82%"></div>
               </div>
             </div>
-            <div class="workspace__tile">
-              <h4>Top opportunities</h4>
-              <div class="workspace__list">
-                <div><span>Refresh service page titles</span><strong>High</strong></div>
-                <div><span>Build internal links to case studies</span><strong>Med</strong></div>
-                <div><span>Compress large blog visuals</span><strong>Med</strong></div>
-                <div><span>Add schema to landing pages</span><strong>High</strong></div>
+            <div class="workspace-tile">
+              <h4>Template categories</h4>
+              <div class="workspace-list">
+                <div><span>Keyword research</span><strong>Core</strong></div>
+                <div><span>On-page</span><strong>Core</strong></div>
+                <div><span>Off-page</span><strong>Scale</strong></div>
+                <div><span>Technical</span><strong>Core</strong></div>
+                <div><span>Extras</span><strong>Reporting</strong></div>
               </div>
             </div>
           </div>
@@ -457,59 +196,59 @@
 
       <div class="column">
         <article class="panel section">
-          <div class="section__head">
+          <div class="section-head">
             <div>
               <h3>Priority queue</h3>
-              <p>Quick action list for the current sprint.</p>
+              <p>Example tasks from the real template model.</p>
             </div>
           </div>
-          <div class="task-list">
+          <div class="tasks">
             <div class="task">
               <div>
-                <h4>Rewrite homepage meta description</h4>
-                <small>Focus on clarity and stronger click intent.</small>
+                <h4>Baseline keyword set</h4>
+                <small>Identify the primary commercial and branded keyword targets.</small>
               </div>
-              <span class="task__badge">Today</span>
+              <span class="badge">Tier 1+</span>
             </div>
             <div class="task">
               <div>
-                <h4>Fix duplicate H1 on case study page</h4>
-                <small>Small technical cleanup with strong impact.</small>
+                <h4>Schema and structured data review</h4>
+                <small>Validate structured data coverage on high-value pages.</small>
               </div>
-              <span class="task__badge">Next</span>
+              <span class="badge">Tier 2+</span>
             </div>
             <div class="task">
               <div>
-                <h4>Draft content cluster around local SEO</h4>
-                <small>Use this as a future card or content planner.</small>
+                <h4>Quarterly roadmap refresh</h4>
+                <small>Re-prioritize based on results, blockers, and business goals.</small>
               </div>
-              <span class="task__badge">Later</span>
+              <span class="badge">Tier 3</span>
             </div>
           </div>
         </article>
 
         <article class="panel section">
-          <div class="section__head">
+          <div class="section-head">
             <div>
               <h3>Notes</h3>
-              <p>Loose placeholders for insights, reminders, or client comments.</p>
+              <p>Practical implementation choices for this split-repo setup.</p>
             </div>
           </div>
           <div class="notes">
-            <div class="list-card">
-              <h4>Pastel direction</h4>
-              <small>Soft lavender, mint, peach, and sky blocks to keep the interface calm.</small>
+            <div class="note">
+              <h4>UI split</h4>
+              <small>The polished portfolio preview stays here, while the real authenticated workspace runs from the backend repo under <code>/SEO</code>.</small>
             </div>
-            <div class="list-card">
-              <h4>Minimal layout</h4>
-              <small>Wide spacing, rounded cards, glassy panels, no heavy data density yet.</small>
+            <div class="note">
+              <h4>Security posture</h4>
+              <small>Session auth protects the app. Credentials are collected because they were required, but should move to encrypted storage in production.</small>
             </div>
-            <div class="list-card">
-              <h4>Next build ideas</h4>
-              <small>Add real charts, keyword tables, audit progress, and page-level drilldowns.</small>
+            <div class="note">
+              <h4>Extensibility</h4>
+              <small>The backend exposes JSON endpoints so the static preview could later evolve into a richer frontend client.</small>
             </div>
           </div>
-          <a class="back-link" href="/">← Back to home</a>
+          <a class="footer-link" href="/">← Back to home</a>
         </article>
       </div>
     </section>
