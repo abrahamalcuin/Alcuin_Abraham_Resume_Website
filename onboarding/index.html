@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onboarding | Alcuin Abraham</title>
+  <meta name="description" content="Create your account for the Alcuin Abraham SEO workspace.">
+  <link rel="canonical" href="https://alcuinabraham.com/onboarding/">
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --surface: #ffffff;
+      --text: #111111;
+      --muted: #5b5b5b;
+      --border: #d5d5d5;
+      --accent: #111111;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f4f4f4 0%, #ececec 100%);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .shell {
+      width: min(100%, 520px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+    }
+    .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    h1 { margin: 0 0 10px; font-size: 2rem; }
+    p { margin: 0 0 20px; line-height: 1.5; color: var(--muted); }
+    form { display: grid; gap: 14px; }
+    label { display: grid; gap: 8px; font-weight: 600; }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      font: inherit;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+    button {
+      padding: 13px 16px;
+      font: inherit;
+      font-weight: 700;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
+    .helper { font-size: 0.95rem; }
+    .footer { margin-top: 18px; }
+    a { color: var(--text); }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="eyebrow">Alcuin Abraham</div>
+    <h1>Create your account</h1>
+    <p>Use the invite link you were sent. Your account is created on the backend, but this is the published frontend page.</p>
+    <form id="onboardingForm" method="post" action="https://byui-student-advisor-api.onrender.com/onboarding">
+      <label>
+        Invite token
+        <input type="text" id="token" name="token" required>
+      </label>
+      <label>
+        Username
+        <input type="text" name="username" minlength="4" maxlength="50" required>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" minlength="8" required>
+      </label>
+      <label>
+        Confirm password
+        <input type="password" name="confirm_password" minlength="8" required>
+      </label>
+      <button type="submit">Create account</button>
+    </form>
+    <p class="helper">If you opened a link like <strong>alcuinabraham.com/onboarding?token=...</strong>, the token should fill in automatically.</p>
+    <div class="footer">
+      <a href="/login/">Already have an account? Login →</a>
+    </div>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+    if (token) {
+      document.getElementById('token').value = token;
+    }
+  </script>
+</body>
+</html>
