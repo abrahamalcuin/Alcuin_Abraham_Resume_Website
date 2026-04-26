@@ -3,17 +3,516 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SEO | Alcuin Abraham</title>
-  <meta name="description" content="SEO services and strategy by Alcuin Abraham." />
+  <title>SEO Dashboard | Alcuin Abraham</title>
+  <meta name="description" content="A minimalist pastel SEO dashboard template for Alcuin Abraham." />
   <link rel="canonical" href="https://alcuinabraham.com/SEO/" />
-  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    :root {
+      --bg: #f8f5ff;
+      --bg-soft: #fffdf8;
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-strong: rgba(255, 255, 255, 0.92);
+      --text: #2f2a3a;
+      --muted: #746d85;
+      --line: rgba(107, 88, 140, 0.12);
+      --lavender: #e9ddff;
+      --mint: #dff7ee;
+      --peach: #ffe7dc;
+      --sky: #dfeeff;
+      --shadow: 0 24px 60px rgba(134, 115, 170, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(233, 221, 255, 0.9), transparent 34%),
+        radial-gradient(circle at top right, rgba(223, 247, 238, 0.85), transparent 28%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 18px 22px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .brand h1,
+    .hero h2,
+    .panel h3,
+    .panel h4,
+    .list-card h4 {
+      margin: 0;
+    }
+
+    .brand h1 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .topbar__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .column {
+      display: grid;
+      gap: 22px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 28px;
+    }
+
+    .hero__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 58ch;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+
+    .stat:nth-child(1) { background: var(--lavender); }
+    .stat:nth-child(2) { background: var(--mint); }
+    .stat:nth-child(3) { background: var(--peach); }
+
+    .stat span {
+      display: block;
+      font-size: 0.82rem;
+      color: rgba(47, 42, 58, 0.68);
+      margin-bottom: 8px;
+    }
+
+    .stat strong {
+      font-size: 1.9rem;
+      line-height: 1;
+    }
+
+    .section {
+      padding: 24px 26px 26px;
+    }
+
+    .section__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section__head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.66);
+      border: 1px solid var(--line);
+    }
+
+    .mini-card:nth-child(2) { background: rgba(223, 238, 255, 0.8); }
+    .mini-card:nth-child(3) { background: rgba(255, 231, 220, 0.76); }
+    .mini-card:nth-child(4) { background: rgba(223, 247, 238, 0.76); }
+
+    .mini-card span,
+    .task small,
+    .list-card small {
+      color: var(--muted);
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.45rem;
+      margin: 8px 0 6px;
+    }
+
+    .task-list,
+    .notes {
+      display: grid;
+      gap: 12px;
+    }
+
+    .task,
+    .list-card {
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+
+    .task {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .task__badge {
+      white-space: nowrap;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: var(--sky);
+    }
+
+    .workspace {
+      background: linear-gradient(180deg, rgba(233,221,255,0.45) 0%, rgba(255,255,255,0.55) 100%);
+    }
+
+    .workspace__canvas {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+    }
+
+    .workspace__tile {
+      min-height: 180px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+
+    .chart {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      height: 130px;
+      margin-top: 18px;
+    }
+
+    .bar {
+      flex: 1;
+      border-radius: 999px 999px 16px 16px;
+      background: linear-gradient(180deg, #d9c8ff 0%, #f3ebff 100%);
+    }
+
+    .bar:nth-child(2) { background: linear-gradient(180deg, #cdeede 0%, #ebfaf4 100%); }
+    .bar:nth-child(3) { background: linear-gradient(180deg, #ffd7c4 0%, #fff1ea 100%); }
+    .bar:nth-child(4) { background: linear-gradient(180deg, #d5e8ff 0%, #eef6ff 100%); }
+
+    .workspace__list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .workspace__list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 920px) {
+      .dashboard,
+      .workspace__canvas {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 18px;
+      }
+
+      .topbar,
+      .section,
+      .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .topbar,
+      .section__head,
+      .task {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="container" style="max-width: 900px; margin: 40px auto; padding: 20px;">
-    <h1>SEO</h1>
-    <p>Welcome to the SEO page for <strong>alcuinabraham.com</strong>.</p>
-    <p>This section can be used for your SEO services, case studies, and strategy offers.</p>
-    <p><a href="/">← Back to home</a></p>
+  <main class="shell">
+    <section class="topbar">
+      <div class="brand">
+        <span class="eyebrow">Alcuin Abraham</span>
+        <h1>SEO Dashboard Template</h1>
+      </div>
+      <div class="topbar__actions">
+        <span class="pill">Minimalist</span>
+        <span class="pill">Pastel Theme</span>
+        <span class="pill">Rough Base</span>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <div class="column">
+        <article class="panel hero">
+          <div class="hero__tag">Quiet growth, clear signals, clean reporting</div>
+          <h2>Simple SEO workspace for strategy and momentum.</h2>
+          <p>
+            A calm starting point for tracking search visibility, content opportunities, technical fixes,
+            and campaign priorities. This is intentionally lightweight so it can evolve fast.
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <span>Visibility score</span>
+              <strong>74</strong>
+            </div>
+            <div class="stat">
+              <span>Keywords up</span>
+              <strong>+18</strong>
+            </div>
+            <div class="stat">
+              <span>Pages to fix</span>
+              <strong>06</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel section">
+          <div class="section__head">
+            <div>
+              <h3>Snapshot</h3>
+              <p>Core cards for a homepage-style overview.</p>
+            </div>
+            <span class="pill">This week</span>
+          </div>
+          <div class="cards">
+            <div class="mini-card">
+              <span>Organic traffic</span>
+              <strong>12.4k</strong>
+              <small>steady from last week</small>
+            </div>
+            <div class="mini-card">
+              <span>Average position</span>
+              <strong>8.3</strong>
+              <small>improving on target pages</small>
+            </div>
+            <div class="mini-card">
+              <span>CTR</span>
+              <strong>4.9%</strong>
+              <small>room to improve metadata</small>
+            </div>
+            <div class="mini-card">
+              <span>Indexed pages</span>
+              <strong>132</strong>
+              <small>all major pages healthy</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel section workspace">
+          <div class="section__head">
+            <div>
+              <h3>Performance canvas</h3>
+              <p>A placeholder section for charts, rankings, and top pages.</p>
+            </div>
+            <span class="pill">Draft module</span>
+          </div>
+          <div class="workspace__canvas">
+            <div class="workspace__tile">
+              <h4>Keyword movement</h4>
+              <div class="chart" aria-hidden="true">
+                <div class="bar" style="height: 48%"></div>
+                <div class="bar" style="height: 66%"></div>
+                <div class="bar" style="height: 58%"></div>
+                <div class="bar" style="height: 82%"></div>
+              </div>
+            </div>
+            <div class="workspace__tile">
+              <h4>Top opportunities</h4>
+              <div class="workspace__list">
+                <div><span>Refresh service page titles</span><strong>High</strong></div>
+                <div><span>Build internal links to case studies</span><strong>Med</strong></div>
+                <div><span>Compress large blog visuals</span><strong>Med</strong></div>
+                <div><span>Add schema to landing pages</span><strong>High</strong></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="column">
+        <article class="panel section">
+          <div class="section__head">
+            <div>
+              <h3>Priority queue</h3>
+              <p>Quick action list for the current sprint.</p>
+            </div>
+          </div>
+          <div class="task-list">
+            <div class="task">
+              <div>
+                <h4>Rewrite homepage meta description</h4>
+                <small>Focus on clarity and stronger click intent.</small>
+              </div>
+              <span class="task__badge">Today</span>
+            </div>
+            <div class="task">
+              <div>
+                <h4>Fix duplicate H1 on case study page</h4>
+                <small>Small technical cleanup with strong impact.</small>
+              </div>
+              <span class="task__badge">Next</span>
+            </div>
+            <div class="task">
+              <div>
+                <h4>Draft content cluster around local SEO</h4>
+                <small>Use this as a future card or content planner.</small>
+              </div>
+              <span class="task__badge">Later</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel section">
+          <div class="section__head">
+            <div>
+              <h3>Notes</h3>
+              <p>Loose placeholders for insights, reminders, or client comments.</p>
+            </div>
+          </div>
+          <div class="notes">
+            <div class="list-card">
+              <h4>Pastel direction</h4>
+              <small>Soft lavender, mint, peach, and sky blocks to keep the interface calm.</small>
+            </div>
+            <div class="list-card">
+              <h4>Minimal layout</h4>
+              <small>Wide spacing, rounded cards, glassy panels, no heavy data density yet.</small>
+            </div>
+            <div class="list-card">
+              <h4>Next build ideas</h4>
+              <small>Add real charts, keyword tables, audit progress, and page-level drilldowns.</small>
+            </div>
+          </div>
+          <a class="back-link" href="/">← Back to home</a>
+        </article>
+      </div>
+    </section>
   </main>
 </body>
 </html>
