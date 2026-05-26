@@ -1,0 +1,1 @@
+{"name":"Budget Planner","short_name":"Budget","description":"A local-first planner for money, budgets, reports, and recurring finance.","start_url":"./","display":"standalone","background_color":"#f7fbff","theme_color":"#dcecff","lang":"en","scope":"/finances/","icons":[{"src":"pwa.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
