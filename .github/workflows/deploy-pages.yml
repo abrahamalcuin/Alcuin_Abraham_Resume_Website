@@ -5,6 +5,9 @@ name: Deploy static site to Pages
     branches:
       - main
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - deploy-pages
 
 permissions:
   contents: read
